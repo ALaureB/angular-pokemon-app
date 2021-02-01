@@ -13,19 +13,43 @@ var core_1 = require("@angular/core");
 var BorderCardDirective = /** @class */ (function () {
     function BorderCardDirective(el) {
         this.el = el;
-        this.setBorder("#f5f5f5");
-        this.setHeight(180);
+        this.initialColor = '#f5f5f5';
+        this.defaultColor = '#009688';
+        this.defaultHeight = 180;
+        this.setBorder(this.initialColor);
+        this.setHeight(this.defaultHeight);
     }
+    BorderCardDirective.prototype.onMouseEnter = function () {
+        this.setBorder(this.borderColor || this.defaultColor);
+    };
+    BorderCardDirective.prototype.onMouseLeave = function () {
+        this.setBorder(this.initialColor);
+    };
     BorderCardDirective.prototype.setBorder = function (color) {
-        var border = "solid 4px " + color;
-        this.el.nativeElement.style.border = border;
+        this.el.nativeElement.style.border = "solid 4px " + color;
     };
     BorderCardDirective.prototype.setHeight = function (height) {
-        this.el.nativeElement.height = height + "px";
+        this.el.nativeElement.style.height = height + 'px';
     };
+    __decorate([
+        core_1.Input('pokemonBorderCard'),
+        __metadata("design:type", String)
+    ], BorderCardDirective.prototype, "borderColor", void 0);
+    __decorate([
+        core_1.HostListener('mouseenter'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], BorderCardDirective.prototype, "onMouseEnter", null);
+    __decorate([
+        core_1.HostListener('mouseleave'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], BorderCardDirective.prototype, "onMouseLeave", null);
     BorderCardDirective = __decorate([
         core_1.Directive({
-            selector: "[pokemonBorderCard]"
+            selector: '[pokemonBorderCard]',
         }),
         __metadata("design:paramtypes", [core_1.ElementRef])
     ], BorderCardDirective);
