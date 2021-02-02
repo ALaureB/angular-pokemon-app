@@ -10,11 +10,13 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var pokemon_list_component_1 = require("./Components/Pokemon List/pokemon-list.component");
 var pokemon_detail_component_1 = require("./Components/Pokemon Detail/pokemon-detail.component");
+var page_not_found_component_1 = require("./Components/Page Not Found/page-not-found.component");
 // routes
 var appRoutes = [
     { path: 'pokemons', component: pokemon_list_component_1.PokemonListComponent },
     { path: 'pokemon/:id', component: pokemon_detail_component_1.PokemonDetailComponent },
     { path: '', redirectTo: 'pokemons', pathMatch: 'full' },
+    { path: '**', component: page_not_found_component_1.PageNotFoundComponent },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

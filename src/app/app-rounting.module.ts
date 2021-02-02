@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { PokemonListComponent } from './Components/Pokemon List/pokemon-list.component';
 import { PokemonDetailComponent } from './Components/Pokemon Detail/pokemon-detail.component';
+import { PageNotFoundComponent } from './Components/Page Not Found/page-not-found.component';
 
 // routes
 const appRoutes: Routes = [
   { path: 'pokemons', component: PokemonListComponent },
   { path: 'pokemon/:id', component: PokemonDetailComponent },
   { path: '', redirectTo: 'pokemons', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
