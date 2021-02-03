@@ -11,22 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var mock_pokemon_1 = require("../../mock-pokemon");
+var pokemons_service_1 = require("../../pokemons.service");
 var PokemonDetailComponent = /** @class */ (function () {
-    function PokemonDetailComponent(route, router) {
+    function PokemonDetailComponent(route, router, pokemonsService) {
         this.route = route;
         this.router = router;
-        this.pokemons = null;
+        this.pokemonsService = pokemonsService;
         this.pokemon = null;
     }
     PokemonDetailComponent.prototype.ngOnInit = function () {
-        this.pokemons = mock_pokemon_1.POKEMONS;
         var pokemonId = +this.route.snapshot.paramMap.get('id');
-        for (var i = 0; i < this.pokemons.length; i++) {
-            if (this.pokemons[i].id == pokemonId) {
-                this.pokemon = this.pokemons[i];
-            }
-        }
+        this.pokemon = this.pokemonsService.getPokemonWithId(pokemonId);
     };
     PokemonDetailComponent.prototype.goBack = function () {
         this.router.navigate(['/pokemons']);
@@ -36,7 +31,9 @@ var PokemonDetailComponent = /** @class */ (function () {
             selector: 'pokemon-detail',
             templateUrl: './app/pokemons/Components/Pokemon Detail/pokemon-detail.component.html',
         }),
-        __metadata("design:paramtypes", [router_1.ActivatedRoute, router_1.Router])
+        __metadata("design:paramtypes", [router_1.ActivatedRoute,
+            router_1.Router,
+            pokemons_service_1.PokemonsService])
     ], PokemonDetailComponent);
     return PokemonDetailComponent;
 }());
