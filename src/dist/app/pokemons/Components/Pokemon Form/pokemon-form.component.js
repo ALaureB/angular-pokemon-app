@@ -12,33 +12,30 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var pokemons_service_1 = require("../../pokemons.service");
-var PokemonDetailComponent = /** @class */ (function () {
-    function PokemonDetailComponent(route, router, pokemonsService) {
+var PokemonFormComponent = /** @class */ (function () {
+    function PokemonFormComponent(route, router, pokemonsService) {
         this.route = route;
         this.router = router;
         this.pokemonsService = pokemonsService;
         this.pokemon = null;
     }
-    PokemonDetailComponent.prototype.ngOnInit = function () {
+    PokemonFormComponent.prototype.ngOnInit = function () {
         var pokemonId = +this.route.snapshot.paramMap.get('id');
         this.pokemon = this.pokemonsService.getPokemonWithId(pokemonId);
     };
-    PokemonDetailComponent.prototype.editPokemon = function () {
-        this.router.navigate(['/pokemon/edit', this.pokemon.id]);
+    PokemonFormComponent.prototype.goBack = function () {
+        this.router.navigate(['/pokemon', this.pokemon.id]);
     };
-    PokemonDetailComponent.prototype.goBack = function () {
-        this.router.navigate(['/pokemons']);
-    };
-    PokemonDetailComponent = __decorate([
+    PokemonFormComponent = __decorate([
         core_1.Component({
-            selector: 'pokemon-detail',
-            templateUrl: './app/pokemons/Components/Pokemon Detail/pokemon-detail.component.html',
+            selector: 'pokemon-form',
+            templateUrl: './app/pokemons/Components/Pokemon Form/pokemon-form.component.html',
         }),
         __metadata("design:paramtypes", [router_1.ActivatedRoute,
             router_1.Router,
             pokemons_service_1.PokemonsService])
-    ], PokemonDetailComponent);
-    return PokemonDetailComponent;
+    ], PokemonFormComponent);
+    return PokemonFormComponent;
 }());
-exports.PokemonDetailComponent = PokemonDetailComponent;
-//# sourceMappingURL=pokemon-detail.component.js.map
+exports.PokemonFormComponent = PokemonFormComponent;
+//# sourceMappingURL=pokemon-form.component.js.map

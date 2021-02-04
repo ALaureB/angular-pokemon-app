@@ -9,10 +9,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var pokemon_detail_component_1 = require("./Components/Pokemon Detail/pokemon-detail.component");
+var pokemon_form_component_1 = require("./Components/Pokemon Form/pokemon-form.component");
 var pokemon_list_component_1 = require("./Components/Pokemon List/pokemon-list.component");
 var pokemonsRoutes = [
     { path: 'pokemons', component: pokemon_list_component_1.PokemonListComponent },
     { path: 'pokemon/:id', component: pokemon_detail_component_1.PokemonDetailComponent },
+    { path: 'pokemon/edit/:id', component: pokemon_form_component_1.PokemonFormComponent },
 ];
 var PokemonsRoutingModule = /** @class */ (function () {
     function PokemonsRoutingModule() {

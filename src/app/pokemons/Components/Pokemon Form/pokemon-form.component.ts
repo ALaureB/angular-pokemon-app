@@ -6,11 +6,11 @@ import { PokemonsService } from '../../pokemons.service';
 import { Pokemon } from '../../Models/Pokemon';
 
 @Component({
-  selector: 'pokemon-detail',
+  selector: 'pokemon-form',
   templateUrl:
-    './app/pokemons/Components/Pokemon Detail/pokemon-detail.component.html',
+    './app/pokemons/Components/Pokemon Form/pokemon-form.component.html',
 })
-export class PokemonDetailComponent implements OnInit {
+export class PokemonFormComponent implements OnInit {
   pokemon: Pokemon = null;
 
   constructor(
@@ -24,11 +24,7 @@ export class PokemonDetailComponent implements OnInit {
     this.pokemon = this.pokemonsService.getPokemonWithId(pokemonId);
   }
 
-  editPokemon(): void {
-    this.router.navigate(['/pokemon/edit', this.pokemon.id]);
-  }
-
   goBack(): void {
-    this.router.navigate(['/pokemons']);
+    this.router.navigate(['/pokemon', this.pokemon.id]);
   }
 }
